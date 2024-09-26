@@ -1,0 +1,20 @@
+services:
+  jenkins:
+    image: jenkins/jenkins # Jenkins Blue Ocean image
+    container_name: jenkins-server
+    restart: always
+    ports:
+      - "8080:8080" # Jenkins web interface
+      - "50000:50000" # Jenkins agent communication port
+    volumes:
+      - ./jenkins_home:/var/jenkins_home # Persistent storage for Jenkins data
+    environment:
+      - JENKINS_OPTS=--prefix=/jenkins # Optional: if you want Jenkins at a URL path like /jenkins
+    networks:
+      - jenkins-net
+
+volumes:
+  jenkins_home:
+
+networks:
+  jenkins-net:
