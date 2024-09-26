@@ -27,7 +27,7 @@ pipeline {
                 cd myapp
                 . venv/bin/activate   # Activate the virtual environment
                 python3 hello.py
-                python3 hello.py --name=Test
+                python3 hello.py --name=Darrel
                 '''
             }
         }
