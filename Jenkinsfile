@@ -14,7 +14,9 @@ pipeline {
                 echo "Building.."
                 sh '''
                 cd myapp
-                pip install -r requirements.txt
+                python3 -m venv venv  # Create a virtual environment
+                . venv/bin/activate     # Activate the virtual environment
+                pip install -r requirements.txt  # Install requirements
                 '''
             }
         }
@@ -23,6 +25,7 @@ pipeline {
                 echo "Testing.."
                 sh '''
                 cd myapp
+                . venv/bin/activate   # Activate the virtual environment
                 python3 hello.py
                 python3 hello.py --name=Test
                 '''
