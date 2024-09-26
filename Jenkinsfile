@@ -2,10 +2,11 @@ pipeline {
     agent { 
         node {
             label 'docker-agent-python'
-            }
-      }
+        }
+    }
     triggers {
-        pollSCM '* * * * *'
+        // This will poll SCM for changes every minute
+        pollSCM('* * * * *')  
     }
     stages {
         stage('Build') {
